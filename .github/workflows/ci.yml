@@ -14,12 +14,14 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Update npm to v11
+        run: npm install -g npm@11
 
       - name: Install dependencies
-        run: |
-          rm -f package-lock.json
-          npm install --no-package-lock
+        run: npm ci
 
       - name: Lint
         run: npm run lint
