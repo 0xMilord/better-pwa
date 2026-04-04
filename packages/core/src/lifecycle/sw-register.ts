@@ -17,7 +17,7 @@ async function registerServiceWorker(
   const log = better.flow("sw-registration");
 
   if (!("serviceWorker" in navigator)) {
-    log.step("sw-not-supported").warn();
+    better.log.warn("sw-registration:not-supported");
     return null;
   }
 
@@ -59,10 +59,10 @@ async function registerServiceWorker(
       });
     });
 
-    log.step("sw-registered").success({ scope: options.scope ?? "/" });
+    better.log.info("sw-registration:registered", { scope: options.scope ?? "/" });
     return registration;
   } catch (error) {
-    log.step("sw-register-failed").error({ error });
+    better.log.error("sw-registration:failed", { error });
     bus.emit({
       type: "sw:redundant",
       detail: { error: error instanceof Error ? error : new Error(String(error)) },

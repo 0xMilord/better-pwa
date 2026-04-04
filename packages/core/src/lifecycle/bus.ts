@@ -73,7 +73,7 @@ class LifecycleBus {
         cb(from, to, { timestamp: record.timestamp });
       }
 
-      this.#log.step("transition").success({ from, to });
+      better.log.info("lifecycle:transition", { from, to });
       return true;
     } catch (error) {
       record.blocked = true;
@@ -82,7 +82,7 @@ class LifecycleBus {
 
       const fallback = matchingTransition.onFail({ ...context, error });
       this.#currentState = fallback;
-      this.#log.step("transition-failed").error({ from, to, fallback, error });
+      better.log.error("lifecycle:transition-failed", { from, to, fallback, error });
       return false;
     }
   }
@@ -115,7 +115,7 @@ class LifecycleBus {
       try {
         (cb as LifecycleEventCallback<T>)(event);
       } catch (err) {
-        this.#log.step("emit-error").warn({ event: event.type, error: err });
+        better.log.warn("lifecycle:emit-error", { event: event.type, error: err });
       }
     }
   }

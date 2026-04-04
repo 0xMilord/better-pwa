@@ -41,7 +41,7 @@ class PermissionEngine {
     });
 
     if (toRequest.length === 0) {
-      this.#log.step("request-all-cached").success({ results });
+      better.log.info("permissions:all-cached", { results });
       return results;
     }
 
@@ -56,7 +56,7 @@ class PermissionEngine {
       results[perm] = result;
     }
 
-    this.#log.step("request-complete").success({ results });
+    this.#log.step("request-complete").success();
     return results;
   }
 
@@ -167,14 +167,14 @@ class PermissionEngine {
   #notifyDenied(permission: string): void {
     const fallback = {
       show: (opts: Record<string, string>) => {
-        this.#log.step("permission-fallback-ui").info({ permission, ...opts });
+        better.log.info("permissions:fallback-ui", { permission, ...opts });
       },
     };
     for (const cb of this.#deniedListeners) {
       try {
         cb(permission, fallback);
       } catch (err) {
-        this.#log.step("denied-listener-error").warn({ error: err });
+        better.log.warn("permissions:denied-listener-error", { error: err });
       }
     }
   }
