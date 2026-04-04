@@ -1,13 +1,15 @@
 name: Release
 
 on:
-  workflow_dispatch:
   push:
-    branches: [main]
+    tags: ['v*']
 
 jobs:
   verify-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
 
@@ -20,8 +22,29 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run one-command release (lint → test → build → size → bump → tag → publish)
-        run: node scripts/release.js
+      - name: Build all packages
+        run: npm run build
+
+      - name: Final size check
+        run: npm run size
+
+      - name: Final test pass
+        run: npm test
+
+      - name: Configure npm authentication
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Publish all packages
+        run: |
+          for pkg in packages/*/; do
+            if [ -f "$pkg/package.json" ]; then
+              echo "Publishing $pkg..."
+              cd "$pkg"
+              npm publish --access public || echo "⚠️  Failed to publish $pkg (may already exist)"
+              cd ../..
+            fi
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

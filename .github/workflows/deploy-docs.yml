@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
-      - 'packages/core/**'
 
   workflow_dispatch:
 
@@ -32,11 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Eleventy
+      - name: Install Eleventy globally
         run: npm install -g @11ty/eleventy
-
-      - name: Generate API docs (Typedoc)
-        run: npm --workspace @better-pwa/core run docs:generate
 
       - name: Build docs site
         run: npx @11ty/eleventy --config=.eleventy.js
