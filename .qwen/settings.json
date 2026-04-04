@@ -13,7 +13,8 @@
       "Bash(node *)",
       "Bash(git commit *)",
       "Bash(git fetch *)",
-      "Bash(git reset *)"
+      "Bash(git reset *)",
+      "Bash(git ls-remote *)"
     ]
   },
   "$version": 3
