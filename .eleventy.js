@@ -8,8 +8,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("docs/src/public");
 
   // Layout aliases — map short names to nested dirs
-  eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
-  eleventyConfig.addLayoutAlias("docs", "layouts/docs.njk");
+  eleventyConfig.addLayoutAlias("base", "base.njk");
+  eleventyConfig.addLayoutAlias("docs", "docs.njk");
 
   // Shortcodes
   eleventyConfig.addShortcode("currentYear", () => String(new Date().getFullYear()));

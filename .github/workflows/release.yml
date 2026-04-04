@@ -1,8 +1,9 @@
 name: Release
 
 on:
+  workflow_dispatch:
   push:
-    tags: ['v*']
+    branches: [main]
 
 jobs:
   verify-and-publish:
@@ -19,23 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build all packages
-        run: npm run build
-
-      - name: Final size check
-        run: npm run size
-
-      - name: Final test pass
-        run: npm test
-
-      - name: Publish all packages
-        run: |
-          for pkg in packages/*/; do
-            if [ -f "$pkg/package.json" ]; then
-              cd "$pkg"
-              npm publish --access public || true
-              cd ../..
-            fi
-          done
+      - name: Run one-command release (lint → test → build → size → bump → tag → publish)
+        run: node scripts/release.js
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+

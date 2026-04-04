@@ -2,6 +2,10 @@
 
 > **better-pwa is to PWAs what React Query is to server state — but for the entire app lifecycle.**
 
+[![CI](https://github.com/better-pwa/better-pwa/actions/workflows/ci.yml/badge.svg)](https://github.com/better-pwa/better-pwa/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/better-pwa/better-pwa/branch/main/graph/badge.svg)](https://app.codecov.io/gh/better-pwa/better-pwa)
+[![Docs](https://img.shields.io/badge/docs-eleventy-blue)](https://better-pwa.github.io/docs/)
+
 Add native-grade reliability to your web app in one line.
 
 ```ts

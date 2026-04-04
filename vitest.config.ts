@@ -8,10 +8,10 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'lcov'],
       thresholds: {
-        statements: 65,
-        branches: 55,
-        functions: 60,
-        lines: 70,
+        statements: 75,
+        branches: 65,
+        functions: 70,
+        lines: 75,
       },
       exclude: [
         'scripts/**',

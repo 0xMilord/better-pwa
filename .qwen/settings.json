@@ -9,7 +9,9 @@
       "Bash(type *)",
       "Bash(start *)",
       "Bash(taskkill *)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(node *)",
+      "Bash(git commit *)"
     ]
   },
   "$version": 3
