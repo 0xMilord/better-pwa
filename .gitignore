@@ -12,3 +12,4 @@ tmp/
 .env.*.local
 .vscode/settings.json
 .idea/
+"package-lock.json" 

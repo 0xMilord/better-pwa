@@ -18,9 +18,6 @@
     "build": "tsup src/index.ts --format esm,cjs --dts --clean --minify",
     "test": "vitest run --coverage"
   },
-  "peerDependencies": {
-    "react": ">=18"
-  },
   "devDependencies": {
     "@types/react": "^18.0",
     "typescript": "^5.7",
