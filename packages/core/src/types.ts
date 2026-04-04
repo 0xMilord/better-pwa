@@ -34,6 +34,9 @@ export interface PwaState {
   isSecureContext: boolean;
   isStandalone: boolean;
   tabCount: number;
+
+  // Versioning (for state migrations)
+  _version: string;
 }
 
 export interface StateDiff {
@@ -165,15 +168,14 @@ export interface PresetConfig {
 
 // ─── Plugin System ─────────────────────────────────────────────────────────
 
-// Forward reference — BetterPwaRuntime is defined in runtime/index.ts
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface BetterPwaRuntime {}
+// Forward reference — BetterPwaRuntimeShape is defined below
+export interface BetterPwaRuntimeShape {}
 
 export interface BetterPwaPlugin {
   name: string;
   version: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onInit?(pwa: any): void;
+  onInit?(pwa: BetterPwaRuntimeShape): void;
   onStateChange?(diff: StateDiff, state: PwaState): void;
   onLifecycleEvent?(event: LifecycleEvent): void;
   extend?(api: Record<string, unknown>): void;
@@ -207,6 +209,16 @@ export interface UpdateEngineAPI {
   status(): UpdateStatus;
 }
 
+export interface BetterPwaRuntimeShape {
+  state: () => StateEngineAPI;
+  lifecycle: () => LifecycleEngineAPI;
+  permissions: () => PermissionEngineAPI;
+  update: () => UpdateEngineAPI;
+  on<T extends LifecycleEvent>(type: T["type"], cb: LifecycleEventCallback<T>): Unsubscribe;
+  use(plugin: BetterPwaPlugin): void;
+  destroy(): Promise<void>;
+}
+
 export interface BetterPwaConfig {
   preset?: PresetName;
   swUrl?: string;
@@ -214,10 +226,11 @@ export interface BetterPwaConfig {
   updateStrategy?: "soft" | "hard" | "gradual" | "on-reload";
   debug?: boolean;
   migrationWindow?: number;
+  version?: string;
   [key: string]: unknown;
 }
 
-export interface BetterPwaRuntimeShape {
+export interface BetterPwaRuntime {
   state: () => StateEngineAPI;
   lifecycle: () => LifecycleEngineAPI;
   permissions: () => PermissionEngineAPI;

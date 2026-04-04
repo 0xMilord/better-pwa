@@ -48,4 +48,5 @@ export type {
   LifecycleEngineAPI,
   PermissionEngineAPI,
   UpdateEngineAPI,
+  BetterPwaRuntimeShape,
 } from "./types.js";

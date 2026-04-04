@@ -20,12 +20,14 @@ const mockServiceWorker = {
 Object.defineProperty(globalThis.navigator, 'serviceWorker', {
   value: mockServiceWorker,
   writable: true,
+  configurable: true,
 });
 
 // Mock navigator.onLine
 Object.defineProperty(globalThis.navigator, 'onLine', {
   value: true,
   writable: true,
+  configurable: true,
 });
 
 // Mock navigator.connection
@@ -39,6 +41,25 @@ Object.defineProperty(globalThis.navigator, 'connection', {
     removeEventListener: vi.fn(),
   },
   writable: true,
+  configurable: true,
+});
+
+// Mock navigator.permissions
+Object.defineProperty(globalThis.navigator, 'permissions', {
+  value: {
+    query: vi.fn().mockRejectedValue(new Error('not supported in jsdom')),
+  },
+  writable: true,
+  configurable: true,
+});
+
+// Mock navigator.mediaDevices
+Object.defineProperty(globalThis.navigator, 'mediaDevices', {
+  value: {
+    getUserMedia: vi.fn().mockRejectedValue(new Error('not available')),
+  },
+  writable: true,
+  configurable: true,
 });
 
 // Mock window.matchMedia
@@ -64,14 +85,36 @@ Object.defineProperty(navigator, 'storage', {
     persisted: vi.fn().mockResolvedValue(false),
   },
   writable: true,
+  configurable: true,
 });
 
-// Mock beforeinstallprompt
-Object.defineProperty(window, 'BeforeInstallPromptEvent', {
-  value: class BeforeInstallPromptEvent extends Event {},
+// Mock caches API
+globalThis.caches = {
+  open: vi.fn().mockResolvedValue({
+    keys: vi.fn().mockResolvedValue([]),
+    match: vi.fn().mockResolvedValue(null),
+  }),
+  has: vi.fn().mockResolvedValue(false),
+  delete: vi.fn().mockResolvedValue(false),
+  keys: vi.fn().mockResolvedValue([]),
+} as unknown as CacheStorage;
+
+// Mock window.location for update controller tests
+const mockLocation = {
+  ...window.location,
+  reload: vi.fn(),
+};
+Object.defineProperty(window, 'location', {
+  value: mockLocation,
   writable: true,
   configurable: true,
 });
+
+// Mock Notification
+globalThis.Notification = {
+  requestPermission: vi.fn().mockResolvedValue('denied'),
+  permission: 'default',
+} as unknown as typeof Notification;
 
 // Silence better-logger in tests
 try {

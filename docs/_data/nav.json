@@ -1,0 +1,22 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "items": [
+        { "title": "Introduction", "path": "/getting-started/introduction/" },
+        { "title": "Quick Start", "path": "/getting-started/quick-start/" },
+        { "title": "Installation", "path": "/getting-started/installation/" },
+        { "title": "Mental Model", "path": "/getting-started/mental-model/" }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "items": [
+        { "title": "createPwa()", "path": "/api/createPwa/" },
+        { "title": "pwa.state()", "path": "/api/pwa-state/" },
+        { "title": "pwa.update", "path": "/api/pwa-update/" },
+        { "title": "pwa.permissions", "path": "/api/pwa-permissions/" }
+      ]
+    }
+  ]
+}

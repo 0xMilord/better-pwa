@@ -36,6 +36,7 @@ function getDefaultState(): PwaState {
     isSecureContext: globalThis.isSecureContext ?? false,
     isStandalone: globalThis.matchMedia?.("(display-mode: standalone)").matches ?? false,
     tabCount: 1,
+    _version: "0.1.0",
   };
 }
 

@@ -1,0 +1,39 @@
+---
+layout: base.njk
+---
+<div class="docs-layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      {% for section in nav.sections %}
+      <div class="nav-section">
+        <h3>{{ section.title }}</h3>
+        <ul>
+          {% for item in section.items %}
+          <li><a href="{{ item.path }}" {% if item.path == page.url %}class="active"{% endif %}>{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+      <div class="nav-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="https://github.com/0xmilord/better-pwa">GitHub</a></li>
+          <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <article class="docs-content">
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <p class="lead">{{ description }}</p>
+    {% endif %}
+    {{ content | safe }}
+    {% if prev or next %}
+    <nav class="page-nav">
+      {% if prev %}<a href="{{ prev.path }}">← {{ prev.title }}</a>{% endif %}
+      {% if next %}<a href="{{ next.path }}">{{ next.title }} →</a>{% endif %}
+    </nav>
+    {% endif %}
+  </article>
+</div>

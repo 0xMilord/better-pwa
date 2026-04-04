@@ -2,6 +2,19 @@
   "name": "better-pwa-monorepo",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/offline",
+    "packages/storage",
+    "packages/sw-builder",
+    "packages/manifest",
+    "packages/cli",
+    "packages/adapter-react",
+    "packages/adapter-vue",
+    "packages/adapter-svelte",
+    "packages/adapter-next",
+    "packages/adapter-vite"
+  ],
   "scripts": {
     "lint": "eslint packages/ --fix",
     "test": "vitest run --coverage",
@@ -9,20 +22,20 @@
     "test:reliability": "vitest run test/e2e/reliability.test.ts",
     "test:monkey": "vitest run test/e2e/monkey.test.ts",
     "test:guarantees": "vitest run test/e2e/guarantees.test.ts",
-    "build": "pnpm -r run build",
+    "build": "node scripts/build-all.js",
     "size": "node scripts/check-sizes.js",
     "changeset": "node scripts/new-changeset.js",
     "release": "node scripts/release.js",
     "release:dry-run": "node scripts/release.js --dry-run",
-    "typecheck": "pnpm -r exec -- tsc --noEmit"
+    "typecheck": "tsc --noEmit -p packages/core/tsconfig.json && tsc --noEmit -p packages/offline/tsconfig.json && tsc --noEmit -p packages/storage/tsconfig.json && tsc --noEmit -p packages/sw-builder/tsconfig.json && tsc --noEmit -p packages/manifest/tsconfig.json"
   },
   "devDependencies": {
     "@better-logger/core": "^1.0.0",
-    "@vitest/coverage-v8": "^4.0.0",
-    "broadcastchannel-polyfill": "^1.0",
-    "eslint": "^9.39.0",
     "@eslint/js": "^9.39.0",
-    "fake-indexeddb": "^6.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "broadcastchannel-polyfill": "^1.0.0",
+    "eslint": "^9.39.0",
+    "fake-indexeddb": "^6.0.0",
     "jsdom": "^28.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.9.0",
@@ -30,7 +43,6 @@
     "vitest": "^4.0.0"
   },
   "engines": {
-    "node": ">=24"
-  },
-  "packageManager": "pnpm@10.14.0"
+    "node": ">=20"
+  }
 }

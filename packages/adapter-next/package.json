@@ -19,7 +19,6 @@
     "test": "vitest run --coverage"
   },
   "devDependencies": {
-    "@better-pwa/core": "workspace:*",
     "typescript": "^5.7",
     "tsup": "^8.0"
   },

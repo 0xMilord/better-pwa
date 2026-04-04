@@ -3,7 +3,10 @@
     "allow": [
       "Read(C:\\Users\\0xy\\Desktop\\better-logger/**)",
       "Bash(pnpm install)",
-      "Bash(pnpm run *)"
+      "Bash(pnpm run *)",
+      "Bash(r *)",
+      "Bash(@findstr *)",
+      "Bash(type *)"
     ]
   },
   "$version": 3

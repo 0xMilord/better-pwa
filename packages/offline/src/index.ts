@@ -66,7 +66,7 @@ class MutationQueue {
     return [...this.#queue];
   }
 
-  /** Replay all mutations (called when online) */
+  /** Replay all mutations (called when online) — single pass */
   async replay(
     executor: (entry: MutationEntry) => Promise<boolean>
   ): Promise<{ success: MutationEntry[]; failed: MutationEntry[] }> {
@@ -75,7 +75,9 @@ class MutationQueue {
 
     const success: MutationEntry[] = [];
     const failed: MutationEntry[] = [];
+    const remaining: MutationEntry[] = [];
 
+    // Process each entry once
     while (this.#queue.length > 0) {
       const entry = this.#queue.shift()!;
       try {
@@ -89,8 +91,7 @@ class MutationQueue {
             failed.push(entry);
             await this.#removeEntry(entry.id);
           } else {
-            this.#queue.push(entry);
-            this.#sortQueue();
+            remaining.push(entry);
           }
         }
       } catch {
@@ -99,14 +100,17 @@ class MutationQueue {
           failed.push(entry);
           await this.#removeEntry(entry.id);
         } else {
-          this.#queue.push(entry);
-          this.#sortQueue();
+          remaining.push(entry);
         }
       }
     }
 
+    // Put remaining entries back in queue, sorted by priority
+    this.#queue.push(...remaining);
+    this.#sortQueue();
+
     this.#replaying = false;
-    better.log.info("offline:replay-complete", { success: success.length, failed: failed.length });
+    better.log.info("offline:replay-complete", { success: success.length, failed: failed.length, remaining: remaining.length });
     return { success, failed };
   }
 

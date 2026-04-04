@@ -16,7 +16,7 @@ const BUDGETS = {
   '@better-pwa/offline': 8192,     // 8KB
   '@better-pwa/storage': 5120,     // 5KB
   '@better-pwa/sw-builder': 51200, // 50KB
-  '@better-pwa/manifest': 3072,    // 3KB
+  '@better-pwa/manifest': 5120,    // 5KB — build tool, not runtime
   '@better-pwa/adapter-react': 2048,
   '@better-pwa/adapter-vue': 2048,
   '@better-pwa/adapter-svelte': 2048,
