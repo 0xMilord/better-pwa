@@ -1,0 +1,98 @@
+---
+layout: base.njk
+title: better-pwa
+description: Production-grade PWA runtime. One line. Everything works.
+---
+<section class="hero">
+  <h1>better-pwa</h1>
+  <p class="hero-tagline">
+    <strong>better-pwa is to PWAs what React Query is to server state</strong> — but for the entire app lifecycle.
+  </p>
+  <div class="hero-actions">
+    <a href="/content/getting-started/quick-start/" class="btn btn-primary">Get Started →</a>
+    <a href="https://github.com/0xMilord/better-pwa" class="btn btn-secondary">GitHub</a>
+  </div>
+  <div class="hero-install">
+    <code>npm install @better-pwa/core</code>
+  </div>
+</section>
+
+<div class="section">
+  <h2>What you get</h2>
+  <div class="grid-4">
+    <div class="cell">
+      <h3>never loses data</h3>
+      <p>Offline mutations queue and replay automatically. IDB-backed durability guarantees.</p>
+    </div>
+    <div class="cell">
+      <h3>never breaks on update</h3>
+      <p>Background service worker swaps with zero session interruption.</p>
+    </div>
+    <div class="cell">
+      <h3>never desyncs across tabs</h3>
+      <p>Single source of truth via BroadcastChannel. Leader election, deduplication.</p>
+    </div>
+    <div class="cell">
+      <h3>never silently fails permissions</h3>
+      <p>Batched, retried, with fallback UI hooks. Exponential backoff.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>One line. Everything works.</h2>
+  <pre><code>import { createPwa } from "@better-pwa/core"
+
+createPwa({ preset: "saas" })</code></pre>
+  <p>That one line sets up a service worker, manifest, state engine, offline queue, update lifecycle, multi-tab sync, and permission system. The preset made 100 configuration decisions for you.</p>
+</div>
+
+<div class="section">
+  <h2>Presets: 100 decisions → 1 decision</h2>
+  <div class="grid-presets">
+    <div class="cell">
+      <h3>saas</h3>
+      <p>Dashboards, CRMs, admin panels.</p>
+      <code>updateStrategy: "soft"</code>
+    </div>
+    <div class="cell">
+      <h3>ecommerce</h3>
+      <p>Cart persistence, checkout sync.</p>
+      <code>updateStrategy: "on-reload"</code>
+    </div>
+    <div class="cell">
+      <h3>offline-first</h3>
+      <p>Field apps, spotty connectivity.</p>
+      <code>conflictResolution: "merge"</code>
+    </div>
+    <div class="cell">
+      <h3>content</h3>
+      <p>Blogs, media, reading apps.</p>
+      <code>permissionBehavior: "manual"</code>
+    </div>
+  </div>
+</div>
+
+<section class="guarantee-section">
+  <h2>Runtime Guarantees</h2>
+  <p>These aren't best practices. They are <strong>enforced invariants</strong> with runtime violation detection.</p>
+  <table>
+    <thead>
+      <tr><th>Guarantee</th><th>What it means</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Data Durability</strong></td><td>User actions are never lost — offline or online</td></tr>
+      <tr><td><strong>Update Safety</strong></td><td>No broken sessions during deployments</td></tr>
+      <tr><td><strong>Cross-Tab Consistency</strong></td><td>One state everywhere, no stale tabs</td></tr>
+      <tr><td><strong>Permission Resilience</strong></td><td>Every denial has a recovery path</td></tr>
+      <tr><td><strong>Cold Start Integrity</strong></td><td>Deterministic boot regardless of cache state</td></tr>
+      <tr><td><strong>Schema Evolution</strong></td><td>State migrations prevent data loss on version upgrades</td></tr>
+      <tr><td><strong>Resource Prioritization</strong></td><td>Critical resources always synced before non-critical</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="cta">
+  <h2>ready to build?</h2>
+  <a href="/content/getting-started/quick-start/" class="btn btn-primary">Quick Start →</a>
+</section>

@@ -1,0 +1,36 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "items": [
+        { "title": "Introduction", "path": "/content/getting-started/introduction/" },
+        { "title": "Quick Start", "path": "/content/getting-started/quick-start/" },
+        { "title": "Installation", "path": "/content/getting-started/installation/" },
+        { "title": "Mental Model", "path": "/content/getting-started/mental-model/" }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "items": [
+        { "title": "createPwa()", "path": "/content/api/createPwa/" },
+        { "title": "pwa.state()", "path": "/content/api/pwa-state/" },
+        { "title": "pwa.update", "path": "/content/api/pwa-update/" },
+        { "title": "pwa.permissions", "path": "/content/api/pwa-permissions/" }
+      ]
+    },
+    {
+      "title": "Guides",
+      "items": [
+        { "title": "Offline-First App", "path": "/guides/offline-first/" },
+        { "title": "React Integration", "path": "/guides/react/" }
+      ]
+    },
+    {
+      "title": "Guarantees",
+      "items": [
+        { "title": "Overview", "path": "/content/guarantees/" },
+        { "title": "Data Durability", "path": "/guarantees/data-durability/" }
+      ]
+    }
+  ]
+}
