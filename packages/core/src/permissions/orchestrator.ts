@@ -10,7 +10,6 @@ import type {
 } from "../types.js";
 
 const DEFAULT_MAX_RETRIES = 4;
-const BACKOFF_MS = [1000, 2000, 4000, 8000];
 
 class PermissionEngine {
   #cachedPermissions: Record<string, PermissionState> = {};

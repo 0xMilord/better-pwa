@@ -168,14 +168,11 @@ export interface PresetConfig {
 
 // ─── Plugin System ─────────────────────────────────────────────────────────
 
-// Forward reference — BetterPwaRuntimeShape is defined below
-export interface BetterPwaRuntimeShape {}
-
 export interface BetterPwaPlugin {
   name: string;
   version: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onInit?(pwa: BetterPwaRuntimeShape): void;
+  onInit?(pwa: any): void;
   onStateChange?(diff: StateDiff, state: PwaState): void;
   onLifecycleEvent?(event: LifecycleEvent): void;
   extend?(api: Record<string, unknown>): void;

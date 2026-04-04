@@ -14,8 +14,6 @@ async function registerServiceWorker(
   options: SwRegistrationOptions,
   bus: LifecycleBus
 ): Promise<ServiceWorkerRegistration | null> {
-  const log = better.flow("sw-registration");
-
   if (!("serviceWorker" in navigator)) {
     better.log.warn("sw-registration:not-supported");
     return null;

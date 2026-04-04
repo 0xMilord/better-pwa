@@ -26,9 +26,7 @@ class UpdateController {
   #listeners = new Map<string, Set<(version: string) => void>>();
   #pollInterval: number | null = null;
   #updateCycleCount = 0;
-  #lastHash: string | null = null;
   #registration: ServiceWorkerRegistration | null = null;
-  #log = better.flow("update-controller");
 
   constructor(registration?: ServiceWorkerRegistration | null) {
     this.#registration = registration ?? null;

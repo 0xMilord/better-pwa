@@ -108,7 +108,7 @@ async function buildSw(config: SwBuilderConfig = {}): Promise<string> {
 async function globFiles(directory: string, patterns: string[]): Promise<Array<{ url: string; revision: string | null }>> {
   try {
     const { glob } = await import("glob");
-    const { statSync, readFileSync } = await import("node:fs");
+    const { readFileSync } = await import("node:fs");
     const { join, relative } = await import("node:path");
     const { createHash } = await import("node:crypto");
 
@@ -144,15 +144,6 @@ function generateSwCode(options: {
   scope: string;
 }): string {
   const { precacheEntries, runtimeCaching = [], scope } = options;
-
-  // Import maps for Workbox (using CDN)
-  const importMap = `{
-  "workbox-core": "https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-core.prod.js",
-  "workbox-precaching": "https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-precaching.prod.js",
-  "workbox-routing": "https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-routing.prod.js",
-  "workbox-strategies": "https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-strategies.prod.js",
-  "workbox-expiration": "https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-expiration.prod.js"
-}`;
 
   // Precache manifest
   const manifest = JSON.stringify(precacheEntries);

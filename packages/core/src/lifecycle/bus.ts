@@ -25,7 +25,6 @@ class LifecycleBus {
   #transitions: Transition[] = [];
   #transitionHistory: TransitionRecord[] = [];
   #blockedTransitions: TransitionRecord[] = [];
-  #log = better.flow("lifecycle-bus");
 
   /** Register a transition rule with guard, action, and fallback */
   registerTransition(transition: Transition): void {

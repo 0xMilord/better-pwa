@@ -1,5 +1,5 @@
 // packages/offline/test/queue.test.ts
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { MutationQueue } from '../src/index.js';
 
 describe('MutationQueue', () => {

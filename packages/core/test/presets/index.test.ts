@@ -11,7 +11,7 @@ describe('presets', () => {
   });
 
   it('each preset has required fields', () => {
-    for (const [name, preset] of Object.entries(presets)) {
+    for (const preset of Object.values(presets)) {
       expect(preset).toHaveProperty('updateStrategy');
       expect(preset).toHaveProperty('permissionBehavior');
       expect(preset).toHaveProperty('storageEngine');

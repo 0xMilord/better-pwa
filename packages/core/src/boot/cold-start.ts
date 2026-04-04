@@ -7,7 +7,6 @@
  */
 import { better } from "@better-logger/core";
 import type {
-  AppState,
   BootStage,
   BetterPwaConfig,
   ColdStartResult,
@@ -22,9 +21,8 @@ const DEFAULT_TIMEOUTS = {
 
 class ColdStartEngine {
   #stages: BootStage[] = [];
-  #log = better.flow("cold-start");
 
-  constructor(config: BetterPwaConfig) {
+  constructor(_config: BetterPwaConfig) {
     this.#stages = [
       {
         name: "hydrate",
