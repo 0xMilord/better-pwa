@@ -9,15 +9,15 @@ layout: base.njk
         <h3>{{ section.title }}</h3>
         <ul>
           {% for item in section.items %}
-          <li><a href="{{ item.path }}" {% if item.path == page.url %}class="active"{% endif %}>{{ item.title }}</a></li>
+          <li><a href="{{ item.path }}"{% if item.path == page.url %} class="active"{% endif %}>{{ item.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
       {% endfor %}
       <div class="nav-section">
-        <h3>Resources</h3>
+        <h3>resources</h3>
         <ul>
-          <li><a href="https://github.com/0xmilord/better-pwa">GitHub</a></li>
+          <li><a href="https://github.com/0xmilord/better-pwa">github</a></li>
           <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
         </ul>
       </div>

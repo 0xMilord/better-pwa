@@ -1,9 +1,30 @@
----
-layout: base.njk
-title: better-pwa
-description: Production-grade PWA runtime. One line. Everything works.
----
-<section class="hero">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>better-pwa — better-pwa</title>
+  <meta name="description" content="Production-grade PWA runtime. One line. Everything works.">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">better-pwa</span>
+      <span class="version-badge">v0.1-alpha</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/getting-started/introduction/">Docs</a>
+      <a href="/api/createPwa/">API</a>
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+  <main><section class="hero">
   <h1>better-pwa</h1>
   <p class="hero-tagline">
     <strong>better-pwa is to PWAs what React Query is to server state</strong> — but for the entire app lifecycle.
@@ -16,7 +37,6 @@ description: Production-grade PWA runtime. One line. Everything works.
     <code>npm install @better-pwa/core</code>
   </div>
 </section>
-
 <div class="section">
   <h2>What you get</h2>
   <div class="grid-4">
@@ -38,15 +58,12 @@ description: Production-grade PWA runtime. One line. Everything works.
     </div>
   </div>
 </div>
-
 <div class="section">
   <h2>One line. Everything works.</h2>
   <pre><code class="language-ts">import { createPwa } from "@better-pwa/core"
-
-createPwa({ preset: "saas" })</code></pre>
+<p>createPwa({ preset: &quot;saas&quot; })</code></pre></p>
   <p>That one line sets up a service worker, manifest, state engine, offline queue, update lifecycle, multi-tab sync, and permission system. The preset made 100 configuration decisions for you.</p>
 </div>
-
 <div class="section">
   <h2>Presets: 100 decisions → 1 decision</h2>
   <div class="grid-presets">
@@ -72,7 +89,6 @@ createPwa({ preset: "saas" })</code></pre>
     </div>
   </div>
 </div>
-
 <section class="guarantee-section">
   <h2>Runtime Guarantees</h2>
   <p>These aren't best practices. They are <strong>enforced invariants</strong> with runtime violation detection.</p>
@@ -91,8 +107,20 @@ createPwa({ preset: "saas" })</code></pre>
     </tbody>
   </table>
 </section>
-
 <section class="cta">
   <h2>ready to build?</h2>
   <a href="/getting-started/quick-start/" class="btn btn-primary">Quick Start →</a>
 </section>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 better-pwa · MIT License · Built for the web platform</p>
+    <div class="footer-links">
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+      <a href="https://npmjs.com/package/@better-pwa/core">npm</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

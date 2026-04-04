@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guarantees — better-pwa</title>
+  <meta name="description" content="The formal runtime contract of better-pwa. Violations are P0 bugs.">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">better-pwa</span>
+      <span class="version-badge">v0.1-alpha</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/getting-started/introduction/">Docs</a>
+      <a href="/api/createPwa/">API</a>
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+  <main><div class="docs-layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul>
+          
+          <li><a href="/getting-started/introduction/">Introduction</a></li>
+          
+          <li><a href="/getting-started/quick-start/">Quick Start</a></li>
+          
+          <li><a href="/getting-started/installation/">Installation</a></li>
+          
+          <li><a href="/getting-started/mental-model/">Mental Model</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>API Reference</h3>
+        <ul>
+          
+          <li><a href="/api/createPwa/">createPwa()</a></li>
+          
+          <li><a href="/api/pwa-state/">pwa.state()</a></li>
+          
+          <li><a href="/api/pwa-update/">pwa.update</a></li>
+          
+          <li><a href="/api/pwa-permissions/">pwa.permissions</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guides</h3>
+        <ul>
+          
+          <li><a href="/guides/offline-first/">Offline-First App</a></li>
+          
+          <li><a href="/guides/react/">React Integration</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guarantees</h3>
+        <ul>
+          
+          <li><a href="/guarantees/">Overview</a></li>
+          
+          <li><a href="/guarantees/data-durability/">Data Durability</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>resources</h3>
+        <ul>
+          <li><a href="https://github.com/0xmilord/better-pwa">github</a></li>
+          <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <article class="docs-content">
+    <h1>Guarantees</h1>
+    
+    <p class="lead">The formal runtime contract of better-pwa. Violations are P0 bugs.</p>
+    
+    <h1>Runtime Guarantees</h1>
+<p>This document is the <strong>formal runtime contract</strong> of better-pwa. Every guarantee is:</p>
+<ul>
+<li><strong>Enforced in code</strong> — not aspirational</li>
+<li><strong>Tested in CI</strong> — regression tests guard every guarantee</li>
+<li><strong>Observable at runtime</strong> — violations emit events</li>
+<li><strong>Versioned</strong> — tied to semver major version</li>
+</ul>
+<p>If better-pwa violates any guarantee below without triggering a degradation event, it is a <strong>P0 bug</strong>.</p>
+<h2>The Four Pillars</h2>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>Guarantee</th>
+<th>In One Sentence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data</strong></td>
+<td>User mutations are never lost</td>
+<td>Every action eventually reaches the server</td>
+</tr>
+<tr>
+<td><strong>Updates</strong></td>
+<td>SW updates never break sessions</td>
+<td>New versions deploy without interruption</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>All tabs see the same state</td>
+<td>Open 1 tab or 10 — one coherent unit</td>
+</tr>
+<tr>
+<td><strong>Permissions</strong></td>
+<td>Failures never brick the app</td>
+<td>Denials handled with clear recovery</td>
+</tr>
+</tbody>
+</table>
+<h2>All Guarantees</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Enforced By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1</td>
+<td><a href="/guarantees/data-durability/">Data Durability</a></td>
+<td>IDB + replay engine</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Update Safety</td>
+<td>Strategy deferral + rollback</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Cross-Tab Consistency</td>
+<td>BroadcastChannel + leader election</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Permission Resilience</td>
+<td>Fallback hooks + backoff</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Cold Start Integrity</td>
+<td>Staged boot + failure isolation</td>
+</tr>
+<tr>
+<td>G6</td>
+<td>Schema Evolution</td>
+<td>Migration gate + atomicity</td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Resource Prioritization</td>
+<td>Priority queue + tagged cache</td>
+</tr>
+</tbody>
+</table>
+<h2>Violation Reporting</h2>
+<pre><code class="language-typescript">pwa.on(&quot;guarantee:at_risk&quot;, (event) =&gt; {
+  console.error(
+    `Guarantee ${event.detail.guarantee} at risk:`,
+    event.detail.reason
+  )
+})
+</code></pre>
+
+    
+    <nav class="page-nav">
+      
+      <a href="/guarantees/data-durability/">Data Durability →</a>
+    </nav>
+    
+  </article>
+</div>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 better-pwa · MIT License · Built for the web platform</p>
+    <div class="footer-links">
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+      <a href="https://npmjs.com/package/@better-pwa/core">npm</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

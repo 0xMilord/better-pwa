@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pwa.state() — better-pwa</title>
+  <meta name="description" content="Reactive state engine — single source of truth for all PWA environment state.">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">better-pwa</span>
+      <span class="version-badge">v0.1-alpha</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/getting-started/introduction/">Docs</a>
+      <a href="/api/createPwa/">API</a>
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+  <main><div class="docs-layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul>
+          
+          <li><a href="/getting-started/introduction/">Introduction</a></li>
+          
+          <li><a href="/getting-started/quick-start/">Quick Start</a></li>
+          
+          <li><a href="/getting-started/installation/">Installation</a></li>
+          
+          <li><a href="/getting-started/mental-model/">Mental Model</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>API Reference</h3>
+        <ul>
+          
+          <li><a href="/api/createPwa/">createPwa()</a></li>
+          
+          <li><a href="/api/pwa-state/">pwa.state()</a></li>
+          
+          <li><a href="/api/pwa-update/">pwa.update</a></li>
+          
+          <li><a href="/api/pwa-permissions/">pwa.permissions</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guides</h3>
+        <ul>
+          
+          <li><a href="/guides/offline-first/">Offline-First App</a></li>
+          
+          <li><a href="/guides/react/">React Integration</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guarantees</h3>
+        <ul>
+          
+          <li><a href="/guarantees/">Overview</a></li>
+          
+          <li><a href="/guarantees/data-durability/">Data Durability</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>resources</h3>
+        <ul>
+          <li><a href="https://github.com/0xmilord/better-pwa">github</a></li>
+          <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <article class="docs-content">
+    <h1>pwa.state()</h1>
+    
+    <p class="lead">Reactive state engine — single source of truth for all PWA environment state.</p>
+    
+    <h1>pwa.state()</h1>
+<p>The reactive state engine. Single source of truth for all PWA environment state.</p>
+<h2>Schema</h2>
+<pre><code class="language-typescript">interface PwaState {
+  isOffline: boolean;
+  connectionType: &quot;slow-2g&quot; | &quot;2g&quot; | &quot;3g&quot; | &quot;4g&quot; | null;
+  isInstalled: boolean;
+  installMethod: &quot;prompt&quot; | &quot;auto&quot; | null;
+  canInstall: boolean;
+  hasUpdate: boolean | string;
+  updateStrategy: &quot;soft&quot; | &quot;hard&quot; | &quot;gradual&quot; | &quot;on-reload&quot;;
+  updateProgress: number;
+  permissions: Record&lt;string, PermissionState&gt;;
+  storage: { usage: number; quota: number; engine: string; utilizationPercent: number };
+  isSecureContext: boolean;
+  isStandalone: boolean;
+  tabCount: number;
+  _version: string;
+}
+</code></pre>
+<h2>API</h2>
+<h3>snapshot()</h3>
+<pre><code class="language-typescript">const state = pwa.state().snapshot()
+// → Readonly&lt;PwaState&gt;
+</code></pre>
+<p>Returns a frozen snapshot. Mutations produce new objects.</p>
+<h3>subscribe()</h3>
+<pre><code class="language-typescript">const unsub = pwa.state().subscribe(
+  [&quot;isOffline&quot;, &quot;hasUpdate&quot;],
+  (diff) =&gt; {
+    if (diff.isOffline !== undefined) {
+      console.log(diff.isOffline ? &quot;went offline&quot; : &quot;back online&quot;)
+    }
+  }
+)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keys</code></td>
+<td><code>StateKeys[]</code></td>
+<td>Which state keys to watch</td>
+</tr>
+<tr>
+<td><code>cb</code></td>
+<td><code>(diff: StateDiff) =&gt; void</code></td>
+<td>Called when any watched key changes</td>
+</tr>
+</tbody>
+</table>
+<p>Returns <code>Unsubscribe</code> function.</p>
+<h3>set()</h3>
+<pre><code class="language-typescript">await pwa.state().set(&quot;isOffline&quot;, true)
+</code></pre>
+<p>Manually override a state key. Triggers subscribers and persists to IDB if critical.</p>
+<h3>reset()</h3>
+<pre><code class="language-typescript">await pwa.state().reset()
+</code></pre>
+<p>Restore all keys to defaults.</p>
+<h2>Guarantees</h2>
+<table>
+<thead>
+<tr>
+<th>Guarantee</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Propagation latency</td>
+<td>&lt;50ms across tabs</td>
+</tr>
+<tr>
+<td>Persistence</td>
+<td>Critical state survives page reloads</td>
+</tr>
+<tr>
+<td>Immutability</td>
+<td>Snapshots are frozen</td>
+</tr>
+<tr>
+<td>Atomicity</td>
+<td>Multi-key updates fire subscribers once</td>
+</tr>
+</tbody>
+</table>
+
+    
+    <nav class="page-nav">
+      <a href="/api/createPwa/">← createPwa()</a>
+      <a href="/api/pwa-update/">pwa.update →</a>
+    </nav>
+    
+  </article>
+</div>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 better-pwa · MIT License · Built for the web platform</p>
+    <div class="footer-links">
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+      <a href="https://npmjs.com/package/@better-pwa/core">npm</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

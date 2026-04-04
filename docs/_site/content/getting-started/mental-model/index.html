@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Model — better-pwa</title>
+  <meta name="description" content="Understand how better-pwa works — one state, one lifecycle, everything derived.">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">better-pwa</span>
+      <span class="version-badge">v0.1-alpha</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/getting-started/introduction/">Docs</a>
+      <a href="/api/createPwa/">API</a>
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+  <main><div class="docs-layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul>
+          
+          <li><a href="/getting-started/introduction/">Introduction</a></li>
+          
+          <li><a href="/getting-started/quick-start/">Quick Start</a></li>
+          
+          <li><a href="/getting-started/installation/">Installation</a></li>
+          
+          <li><a href="/getting-started/mental-model/">Mental Model</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>API Reference</h3>
+        <ul>
+          
+          <li><a href="/api/createPwa/">createPwa()</a></li>
+          
+          <li><a href="/api/pwa-state/">pwa.state()</a></li>
+          
+          <li><a href="/api/pwa-update/">pwa.update</a></li>
+          
+          <li><a href="/api/pwa-permissions/">pwa.permissions</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guides</h3>
+        <ul>
+          
+          <li><a href="/guides/offline-first/">Offline-First App</a></li>
+          
+          <li><a href="/guides/react/">React Integration</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guarantees</h3>
+        <ul>
+          
+          <li><a href="/guarantees/">Overview</a></li>
+          
+          <li><a href="/guarantees/data-durability/">Data Durability</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>resources</h3>
+        <ul>
+          <li><a href="https://github.com/0xmilord/better-pwa">github</a></li>
+          <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <article class="docs-content">
+    <h1>Mental Model</h1>
+    
+    <p class="lead">Understand how better-pwa works — one state, one lifecycle, everything derived.</p>
+    
+    <h1>Mental Model</h1>
+<h2>One State. One Lifecycle. Everything Derived.</h2>
+<p>better-pwa is not a framework. It's a <strong>reliability layer</strong> that sits between your app and the browser.</p>
+<pre><code>Your App
+   ↓
+better-pwa Runtime
+   ├── State Engine     ← Single source of truth
+   ├── Lifecycle Bus    ← State machine: IDLE → BOOT → READY → STABLE
+   ├── Update Controller ← SW update strategies
+   └── Permission Orchestrator ← Batched, retried, with fallbacks
+   ↓
+Browser APIs (Service Worker, IndexedDB, BroadcastChannel)
+</code></pre>
+<h2>The Deterministic State Machine</h2>
+<p>Every better-pwa instance flows through a formal state machine. This eliminates &quot;random bugs&quot; — every edge case is a defined transition.</p>
+<pre><code>IDLE → BOOT → READY → STABLE
+            ↓
+          OFFLINE → SYNCING → STABLE
+            ↓
+          UPDATING → READY
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>When</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IDLE</strong></td>
+<td>Before init()</td>
+<td>Runtime exists but nothing started</td>
+</tr>
+<tr>
+<td><strong>BOOT</strong></td>
+<td>During init()</td>
+<td>State engine, SW registration, migrations</td>
+</tr>
+<tr>
+<td><strong>READY</strong></td>
+<td>After boot</td>
+<td>Core is functional, network status determined</td>
+</tr>
+<tr>
+<td><strong>STABLE</strong></td>
+<td>After sync</td>
+<td>Everything synced, no pending actions</td>
+</tr>
+<tr>
+<td><strong>OFFLINE</strong></td>
+<td>Network lost</td>
+<td>App continues, mutations queue</td>
+</tr>
+<tr>
+<td><strong>SYNCING</strong></td>
+<td>Network restored</td>
+<td>Queue replay, data fetch</td>
+</tr>
+<tr>
+<td><strong>UPDATING</strong></td>
+<td>SW update detected</td>
+<td>Applying new version (strategy-dependent)</td>
+</tr>
+</tbody>
+</table>
+<p>Every transition has a <strong>guard</strong>. If the guard fails, a <strong>fallback state</strong> is entered — never a crash.</p>
+<h2>The Reactive State Object</h2>
+<pre><code class="language-typescript">const state = pwa.state().snapshot()
+// {
+//   isOffline: false,
+//   isInstalled: true,
+//   hasUpdate: false,
+//   permissions: { notifications: &quot;granted&quot; },
+//   updateStrategy: &quot;soft&quot;,
+//   ...
+// }
+</code></pre>
+<p>State changes are:</p>
+<ul>
+<li><strong>Atomic</strong> — multi-key updates fire subscribers once</li>
+<li><strong>Immutable</strong> — snapshots are frozen objects</li>
+<li><strong>Persistent</strong> — critical state survives page reloads (IDB-backed)</li>
+<li><strong>Cross-tab synced</strong> — BroadcastChannel propagates within 50ms</li>
+</ul>
+<h2>How a PWA &quot;Feels Native&quot;</h2>
+<table>
+<thead>
+<tr>
+<th>Native Feature</th>
+<th>better-pwa Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App never crashes on update</td>
+<td>Soft update strategy — new version waits, activates on navigation</td>
+</tr>
+<tr>
+<td>Data never lost offline</td>
+<td>IDB-backed mutation queue, replay on reconnect</td>
+</tr>
+<tr>
+<td>Settings sync across windows</td>
+<td>BroadcastChannel state sync, leader election</td>
+</tr>
+<tr>
+<td>Permission prompts make sense</td>
+<td>Batched requests, pre-prompt context, fallback on denial</td>
+</tr>
+<tr>
+<td>App starts instantly</td>
+<td>Cold start: load cached UI → sync → apply updates → replay</td>
+</tr>
+</tbody>
+</table>
+<h2>What You Control vs What better-pwa Owns</h2>
+<table>
+<thead>
+<tr>
+<th>You Own</th>
+<th>better-pwa Owns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App logic, UI, routing</td>
+<td>SW registration, update detection</td>
+</tr>
+<tr>
+<td>Business logic</td>
+<td>State persistence, cross-tab sync</td>
+</tr>
+<tr>
+<td>Error boundaries</td>
+<td>Permission retry, fallback UI</td>
+</tr>
+<tr>
+<td>API calls</td>
+<td>Offline queuing, replay engine</td>
+</tr>
+</tbody>
+</table>
+<p>The boundary is clear: you write your app, better-pwa handles the environment.</p>
+
+    
+    <nav class="page-nav">
+      <a href="/getting-started/installation/">← Installation</a>
+      <a href="/api/createPwa/">createPwa() →</a>
+    </nav>
+    
+  </article>
+</div>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 better-pwa · MIT License · Built for the web platform</p>
+    <div class="footer-links">
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+      <a href="https://npmjs.com/package/@better-pwa/core">npm</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

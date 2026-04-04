@@ -6,7 +6,8 @@
       "Bash(pnpm run *)",
       "Bash(r *)",
       "Bash(@findstr *)",
-      "Bash(type *)"
+      "Bash(type *)",
+      "Bash(start *)"
     ]
   },
   "$version": 3

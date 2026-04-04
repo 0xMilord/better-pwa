@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} — better-pwa</title>
-  <meta name="description" content="{{ description or 'better-pwa: Production-grade PWA runtime with offline-first reliability' }}">
+  <meta name="description" content="{{ description or 'better-pwa: Production-grade PWA runtime' }}">
   <link rel="stylesheet" href="/css/base.css">
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
   {% include "components/header.njk" %}
-  <main>
-    {{ content | safe }}
-  </main>
+  <main>{{ content | safe }}</main>
   {% include "components/footer.njk" %}
 </body>
 </html>

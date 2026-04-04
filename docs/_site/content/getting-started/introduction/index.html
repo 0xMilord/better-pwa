@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction — better-pwa</title>
+  <meta name="description" content="What is better-pwa and why does it exist?">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">better-pwa</span>
+      <span class="version-badge">v0.1-alpha</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/getting-started/introduction/">Docs</a>
+      <a href="/api/createPwa/">API</a>
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+  <main><div class="docs-layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul>
+          
+          <li><a href="/getting-started/introduction/">Introduction</a></li>
+          
+          <li><a href="/getting-started/quick-start/">Quick Start</a></li>
+          
+          <li><a href="/getting-started/installation/">Installation</a></li>
+          
+          <li><a href="/getting-started/mental-model/">Mental Model</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>API Reference</h3>
+        <ul>
+          
+          <li><a href="/api/createPwa/">createPwa()</a></li>
+          
+          <li><a href="/api/pwa-state/">pwa.state()</a></li>
+          
+          <li><a href="/api/pwa-update/">pwa.update</a></li>
+          
+          <li><a href="/api/pwa-permissions/">pwa.permissions</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guides</h3>
+        <ul>
+          
+          <li><a href="/guides/offline-first/">Offline-First App</a></li>
+          
+          <li><a href="/guides/react/">React Integration</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guarantees</h3>
+        <ul>
+          
+          <li><a href="/guarantees/">Overview</a></li>
+          
+          <li><a href="/guarantees/data-durability/">Data Durability</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>resources</h3>
+        <ul>
+          <li><a href="https://github.com/0xmilord/better-pwa">github</a></li>
+          <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <article class="docs-content">
+    <h1>Introduction</h1>
+    
+    <p class="lead">What is better-pwa and why does it exist?</p>
+    
+    <h1>Introduction</h1>
+<p><code>better-pwa</code> transforms Progressive Web Apps from &quot;cached websites&quot; into <strong>production-grade, native-feeling applications</strong>.</p>
+<h2>The Problem</h2>
+<p>PWA tooling is <strong>engineering-complete</strong> but <strong>product-broken</strong>. Workbox handles precaching. Manifest APIs handle installability. But the <em>orchestration layer</em> — the thing that turns individual APIs into a cohesive, production-grade application — is absent.</p>
+<p><strong>70%+ of PWA failures</strong> in production stem from update/permission mismanagement. Teams spend <strong>3-5 weeks</strong> per project reimplementing lifecycle management.</p>
+<h2>What better-pwa Does</h2>
+<p>better-pwa owns the full lifecycle of a web app:</p>
+<pre><code>Your App
+   ↓
+better-pwa Runtime (one state · one lifecycle)
+   ↓
+Service Worker + Browser APIs
+</code></pre>
+<p><strong>One state. One lifecycle. Everything else is derived.</strong></p>
+<h2>What You Get</h2>
+<table>
+<thead>
+<tr>
+<th>Without better-pwa</th>
+<th>With better-pwa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build offline sync from scratch</td>
+<td><code>pwa.offline.queue(action)</code></td>
+</tr>
+<tr>
+<td>Manual SW hash checking</td>
+<td><code>pwa.update.setStrategy(&quot;soft&quot;)</code></td>
+</tr>
+<tr>
+<td>Custom BroadcastChannel code</td>
+<td>Auto-synced <code>pwa.state()</code></td>
+</tr>
+<tr>
+<td>One-off permission prompts</td>
+<td><code>pwa.permissions.request([&quot;camera&quot;, &quot;file&quot;])</code></td>
+</tr>
+<tr>
+<td>Manual <code>navigator.storage.estimate()</code></td>
+<td><code>pwa.storage.quota()</code> + auto-eviction</td>
+</tr>
+</tbody>
+</table>
+<h2>When NOT to Use better-pwa</h2>
+<ul>
+<li><strong>Static marketing sites</strong> with no user interaction</li>
+<li><strong>Apps that don't need offline</strong> or installability</li>
+<li><strong>Server-rendered apps</strong> where the browser is just a thin client</li>
+</ul>
+<p>If your app has users, sessions, or data — you probably need this.</p>
+
+    
+    <nav class="page-nav">
+      
+      <a href="/getting-started/quick-start/">Quick Start →</a>
+    </nav>
+    
+  </article>
+</div>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 better-pwa · MIT License · Built for the web platform</p>
+    <div class="footer-links">
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+      <a href="https://npmjs.com/package/@better-pwa/core">npm</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

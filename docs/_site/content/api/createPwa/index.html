@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>createPwa() — better-pwa</title>
+  <meta name="description" content="Create and initialize the better-pwa runtime. The single entry point.">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span class="logo-text">better-pwa</span>
+      <span class="version-badge">v0.1-alpha</span>
+    </a>
+    <nav class="header-nav">
+      <a href="/getting-started/introduction/">Docs</a>
+      <a href="/api/createPwa/">API</a>
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+  <main><div class="docs-layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      
+      <div class="nav-section">
+        <h3>Getting Started</h3>
+        <ul>
+          
+          <li><a href="/getting-started/introduction/">Introduction</a></li>
+          
+          <li><a href="/getting-started/quick-start/">Quick Start</a></li>
+          
+          <li><a href="/getting-started/installation/">Installation</a></li>
+          
+          <li><a href="/getting-started/mental-model/">Mental Model</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>API Reference</h3>
+        <ul>
+          
+          <li><a href="/api/createPwa/">createPwa()</a></li>
+          
+          <li><a href="/api/pwa-state/">pwa.state()</a></li>
+          
+          <li><a href="/api/pwa-update/">pwa.update</a></li>
+          
+          <li><a href="/api/pwa-permissions/">pwa.permissions</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guides</h3>
+        <ul>
+          
+          <li><a href="/guides/offline-first/">Offline-First App</a></li>
+          
+          <li><a href="/guides/react/">React Integration</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>Guarantees</h3>
+        <ul>
+          
+          <li><a href="/guarantees/">Overview</a></li>
+          
+          <li><a href="/guarantees/data-durability/">Data Durability</a></li>
+          
+        </ul>
+      </div>
+      
+      <div class="nav-section">
+        <h3>resources</h3>
+        <ul>
+          <li><a href="https://github.com/0xmilord/better-pwa">github</a></li>
+          <li><a href="https://npmjs.com/package/@better-pwa/core">npm</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <article class="docs-content">
+    <h1>createPwa()</h1>
+    
+    <p class="lead">Create and initialize the better-pwa runtime. The single entry point.</p>
+    
+    <h1>createPwa(config)</h1>
+<p>Create and initialize the better-pwa runtime instance.</p>
+<h2>Signature</h2>
+<pre><code class="language-typescript">function createPwa(config: BetterPwaConfig): BetterPwaRuntime
+</code></pre>
+<h2>Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.preset</code></td>
+<td><code>&quot;saas&quot;</code> | <code>&quot;ecommerce&quot;</code> | <code>&quot;offline-first&quot;</code> | <code>&quot;content&quot;</code></td>
+<td>No</td>
+<td>—</td>
+<td>Opinionated preset that configures update strategy, permissions, storage, conflict resolution, and priority tiers</td>
+</tr>
+<tr>
+<td><code>config.swUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>—</td>
+<td>URL to the service worker file (e.g., <code>/sw.js</code>)</td>
+</tr>
+<tr>
+<td><code>config.scope</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>&quot;/&quot;</code></td>
+<td>Service worker scope</td>
+</tr>
+<tr>
+<td><code>config.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>&quot;0.1.0&quot;</code></td>
+<td>App version for state migrations</td>
+</tr>
+<tr>
+<td><code>config.debug</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Enable debug logging</td>
+</tr>
+</tbody>
+</table>
+<h2>Returns</h2>
+<p>A <code>BetterPwaRuntime</code> instance with the following API surface:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwa.init()</code></td>
+<td>Initialize the runtime. Returns <code>Promise&lt;this&gt;</code>. Must be called before using other APIs.</td>
+</tr>
+<tr>
+<td><code>pwa.state()</code></td>
+<td>Access the reactive state engine</td>
+</tr>
+<tr>
+<td><code>pwa.lifecycle()</code></td>
+<td>Access the lifecycle state machine</td>
+</tr>
+<tr>
+<td><code>pwa.permissions()</code></td>
+<td>Access the permission orchestrator</td>
+</tr>
+<tr>
+<td><code>pwa.update()</code></td>
+<td>Access the update controller</td>
+</tr>
+<tr>
+<td><code>pwa.on(event, cb)</code></td>
+<td>Subscribe to lifecycle events</td>
+</tr>
+<tr>
+<td><code>pwa.use(plugin)</code></td>
+<td>Register a plugin</td>
+</tr>
+<tr>
+<td><code>pwa.destroy()</code></td>
+<td>Clean up all resources</td>
+</tr>
+</tbody>
+</table>
+<h2>Examples</h2>
+<h3>Minimal</h3>
+<pre><code class="language-typescript">import { createPwa } from &quot;@better-pwa/core&quot;
+
+const pwa = createPwa({ preset: &quot;saas&quot; })
+await pwa.init()
+</code></pre>
+<h3>Full Configuration</h3>
+<pre><code class="language-typescript">import { createPwa } from &quot;@better-pwa/core&quot;
+
+const pwa = createPwa({
+  preset: &quot;saas&quot;,
+  swUrl: &quot;/sw.js&quot;,
+  scope: &quot;/&quot;,
+  version: &quot;1.0.0&quot;,
+  debug: true,
+})
+
+await pwa.init()
+
+// Check final state
+console.log(&quot;Lifecycle:&quot;, pwa.lifecycle().state())
+// → &quot;STABLE&quot;
+</code></pre>
+<h3>With Service Worker</h3>
+<pre><code class="language-typescript">// In your build step, generate the SW:
+import { buildSw } from &quot;@better-pwa/sw-builder&quot;
+
+await buildSw({
+  globDirectory: &quot;dist&quot;,
+  outputPath: &quot;dist/sw.js&quot;,
+})
+
+// In your app:
+const pwa = createPwa({
+  preset: &quot;saas&quot;,
+  swUrl: &quot;/sw.js&quot;,
+})
+
+await pwa.init()
+</code></pre>
+<h2>Lifecycle Flow</h2>
+<p>When you call <code>init()</code>, the following sequence executes:</p>
+<ol>
+<li><strong>IDLE → BOOT</strong> — State machine enters boot phase</li>
+<li><strong>State engine</strong> — Initialize IDB, BroadcastChannel, network listeners</li>
+<li><strong>Migrations</strong> — Run any registered state migrations if version changed</li>
+<li><strong>SW registration</strong> — Register service worker (if <code>swUrl</code> provided)</li>
+<li><strong>Apply preset</strong> — Configure update strategy from preset</li>
+<li><strong>Cold start</strong> — Hydrate → Sync → Update → Replay (sequential, guarded)</li>
+<li><strong>READY → SYNCING → STABLE</strong> — App is fully operational</li>
+</ol>
+<p>If any stage fails, the app degrades gracefully:</p>
+<ul>
+<li>Hydrate fail → DEGRADED</li>
+<li>Sync fail → OFFLINE mode</li>
+<li>Update fail → Continue with current version</li>
+<li>Replay fail → Queue preserved for later</li>
+</ul>
+<h2>Errors</h2>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>When</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IDB unavailable</code></td>
+<td>IndexedDB blocked or unsupported</td>
+<td>Falls back to in-memory state</td>
+</tr>
+<tr>
+<td><code>SW registration failed</code></td>
+<td>Service worker URL invalid</td>
+<td>Continues without SW</td>
+</tr>
+<tr>
+<td><code>Migration failed</code></td>
+<td>Migration throws</td>
+<td>Logs error, continues with current state</td>
+</tr>
+</tbody>
+</table>
+
+    
+    <nav class="page-nav">
+      <a href="/getting-started/mental-model/">← Mental Model</a>
+      <a href="/api/pwa-state/">pwa.state() →</a>
+    </nav>
+    
+  </article>
+</div>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <p>&copy; 2026 better-pwa · MIT License · Built for the web platform</p>
+    <div class="footer-links">
+      <a href="https://github.com/0xmilord/better-pwa">GitHub</a>
+      <a href="https://npmjs.com/package/@better-pwa/core">npm</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
