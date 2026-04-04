@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/storage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unified storage abstraction: OPFS, IndexedDB, and memory with quota management",
   "type": "module",
   "main": "./dist/index.cjs",

@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/adapter-next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Next.js App Router integration for better-pwa",
   "type": "module",
   "main": "./dist/index.cjs",

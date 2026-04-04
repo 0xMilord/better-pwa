@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/offline",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offline mutation queue, replay engine, and conflict resolution for better-pwa",
   "type": "module",
   "main": "./dist/index.cjs",

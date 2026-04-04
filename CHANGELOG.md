@@ -1,6 +1,6 @@
 # Changelog
 
-## @better-pwa/core@1.0.0 (2026-04-04)
+## @better-pwa/core@1.0.1 (2026-04-04)
 
 ### Breaking Changes
 - **Initial production release** — all APIs are new
@@ -42,7 +42,7 @@
 
 ---
 
-## @better-pwa/offline@1.0.0 (2026-04-04)
+## @better-pwa/offline@1.0.1 (2026-04-04)
 
 ### New Features
 - **IDB-Backed Mutation Queue** — durable offline action storage
@@ -59,7 +59,7 @@
 
 ---
 
-## @better-pwa/storage@1.0.0 (2026-04-04)
+## @better-pwa/storage@1.0.1 (2026-04-04)
 
 ### New Features
 - **Unified Storage Abstraction** — OPFS/IDB/memory engine selection
@@ -73,7 +73,7 @@
 
 ---
 
-## @better-pwa/sw-builder@1.0.0 (2026-04-04)
+## @better-pwa/sw-builder@1.0.1 (2026-04-04)
 
 ### New Features
 - **Config-Driven SW Generation** — Workbox-based service worker builder
@@ -88,7 +88,7 @@
 
 ---
 
-## @better-pwa/manifest@1.0.0 (2026-04-04)
+## @better-pwa/manifest@1.0.1 (2026-04-04)
 
 ### New Features
 - **Web App Manifest Generation** — standards-compliant manifest.json
@@ -102,7 +102,7 @@
 
 ---
 
-## better-pwa@1.0.0 (2026-04-04)
+## better-pwa@1.0.1 (2026-04-04)
 
 ### New Features
 - **CLI entry point** — `better-pwa` command-line interface
@@ -114,7 +114,7 @@
 
 ---
 
-## @better-pwa/adapter-react@1.0.0 (2026-04-04)
+## @better-pwa/adapter-react@1.0.1 (2026-04-04)
 
 ### New Features
 - **React Hooks** — `usePwaState()`, `usePwaUpdate()`
@@ -126,7 +126,7 @@
 
 ---
 
-## @better-pwa/adapter-vue@1.0.0 (2026-04-04)
+## @better-pwa/adapter-vue@1.0.1 (2026-04-04)
 
 ### New Features
 - **Vue Composables** — `usePwaState()`
@@ -138,7 +138,7 @@
 
 ---
 
-## @better-pwa/adapter-svelte@1.0.0 (2026-04-04)
+## @better-pwa/adapter-svelte@1.0.1 (2026-04-04)
 
 ### New Features
 - **Svelte Stores** — `pwaState()`
@@ -150,7 +150,7 @@
 
 ---
 
-## @better-pwa/adapter-next@1.0.0 (2026-04-04)
+## @better-pwa/adapter-next@1.0.1 (2026-04-04)
 
 ### New Features
 - **Next.js Integration** — App Router integration stub
@@ -162,7 +162,7 @@
 
 ---
 
-## @better-pwa/adapter-vite@1.0.0 (2026-04-04)
+## @better-pwa/adapter-vite@1.0.1 (2026-04-04)
 
 ### New Features
 - **Vite Plugin** — SW injection during dev and build
@@ -174,7 +174,7 @@
 
 ---
 
-## Infrastructure (v1.0.0)
+## Infrastructure (v1.0.1)
 
 ### CI/CD
 - GitHub Actions: `ci.yml` — lint → test → build → size-check → guarantee tests → reliability tests

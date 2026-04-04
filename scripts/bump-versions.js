@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * bump-versions.js — Bump all workspace packages to a target version.
- * Usage: node scripts/bump-versions.js 1.0.0
+ * Usage: node scripts/bump-versions.js 1.0.1
  */
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const packagesDir = join(root, 'packages');
-const targetVersion = process.argv[2] || '1.0.0';
+const targetVersion = process.argv[2] || '1.0.1';
 
 const packages = readdirSync(packagesDir).filter((d) => {
   const pkgPath = join(packagesDir, d, 'package.json');

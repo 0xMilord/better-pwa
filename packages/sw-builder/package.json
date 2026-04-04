@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/sw-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Config-driven service worker generation with precaching and cache strategies",
   "type": "module",
   "main": "./dist/index.cjs",

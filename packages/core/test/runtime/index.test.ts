@@ -58,7 +58,7 @@ describe('createPwa', () => {
     const pwa = createPwa({});
     const plugin = {
       name: 'test-plugin',
-      version: '1.0.0',
+      version: '1.0.1',
       onInit: vi.fn(),
     };
     pwa.use(plugin);

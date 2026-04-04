@@ -55,7 +55,7 @@ Manually activate a waiting service worker. Only works when state is `WAITING`.
 
 ```typescript
 const status = pwa.update().status()
-// → { current: "v1.0.0", waiting: "v1.0.1", strategy: "soft" }
+// → { current: "v1.0.1", waiting: "v1.0.1", strategy: "soft" }
 ```
 
 ## State Machine

@@ -65,7 +65,7 @@ const pwa = createPwa({
   preset: "saas",
   swUrl: "/sw.js",
   scope: "/",
-  version: "1.0.0",
+  version: "1.0.1",
   debug: true,
 })
 

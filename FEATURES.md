@@ -702,7 +702,7 @@
   ```typescript
   pwa.use({
     name: "auth-plugin",
-    version: "1.0.0",
+    version: "1.0.1",
     onInit(pwa) {
       pwa.state().subscribe(["isOffline"], (diff) => {
         if (diff.isOffline) pauseAuthRefresh()

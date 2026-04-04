@@ -1,6 +1,6 @@
 {
   "name": "better-pwa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for better-pwa: init, build, simulate, audit, debug, doctor",
   "type": "module",
   "bin": {

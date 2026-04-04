@@ -12,7 +12,7 @@
 "@better-pwa/adapter-vite": major
 ---
 
-# better-pwa v1.0.0 — Initial Production Release
+# better-pwa v1.0.1 — Initial Production Release
 
 ## 🚀 New
 
