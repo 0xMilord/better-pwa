@@ -87,9 +87,9 @@ function generateManifest(config: ManifestConfig): string {
 }
 
 /** Write manifest to disk */
-function writeManifest(config: ManifestConfig, outputPath = "dist/manifest.json"): string {
-  const { writeFileSync, mkdirSync } = require("node:fs");
-  const { dirname } = require("node:path");
+async function writeManifest(config: ManifestConfig, outputPath = "dist/manifest.json"): Promise<string> {
+  const { writeFileSync, mkdirSync } = await import("node:fs");
+  const { dirname } = await import("node:path");
 
   const content = generateManifest(config);
   mkdirSync(dirname(outputPath), { recursive: true });
