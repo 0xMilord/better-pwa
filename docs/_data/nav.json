@@ -17,6 +17,20 @@
         { "title": "pwa.update", "path": "/api/pwa-update/" },
         { "title": "pwa.permissions", "path": "/api/pwa-permissions/" }
       ]
+    },
+    {
+      "title": "Guides",
+      "items": [
+        { "title": "Offline-First App", "path": "/guides/offline-first/" },
+        { "title": "React Integration", "path": "/guides/react/" }
+      ]
+    },
+    {
+      "title": "Guarantees",
+      "items": [
+        { "title": "Overview", "path": "/guarantees/" },
+        { "title": "Data Durability", "path": "/guarantees/data-durability/" }
+      ]
     }
   ]
 }

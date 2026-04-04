@@ -1,0 +1,15 @@
+{
+  "name": "better-pwa-example-saas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "build": "echo 'No build step — vanilla JS example'"
+  },
+  "dependencies": {
+    "@better-pwa/core": "file:../../packages/core"
+  },
+  "devDependencies": {
+    "sirv": "^3.0.0"
+  }
+}
