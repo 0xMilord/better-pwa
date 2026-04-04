@@ -49,7 +49,7 @@ class LifecycleBus {
       record.blocked = true;
       record.reason = `No transition defined: ${from} → ${to}`;
       this.#blockedTransitions.push(record);
-      this.#log.step("transition-no-rule").warn({ from, to });
+      better.log.warn("lifecycle:transition-no-rule", { from, to });
       return false;
     }
 
@@ -58,7 +58,7 @@ class LifecycleBus {
       record.blocked = true;
       record.reason = "Guard returned false";
       this.#blockedTransitions.push(record);
-      this.#log.step("transition-guard-failed").warn({ from, to });
+      better.log.warn("lifecycle:transition-guard-failed", { from, to });
       return false;
     }
 

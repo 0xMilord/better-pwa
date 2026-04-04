@@ -24,7 +24,7 @@ const IDB_VERSION = 1;
 function getDefaultState(): PwaState {
   return {
     isOffline: !navigator.onLine,
-    connectionType: (navigator.connection?.effectiveType ?? null) as PwaState["connectionType"],
+    connectionType: ((navigator as Navigator & { connection?: { effectiveType: PwaState["connectionType"] } }).connection?.effectiveType ?? null) as PwaState["connectionType"],
     isInstalled: false,
     installMethod: null,
     canInstall: false,
@@ -53,6 +53,7 @@ class StateEngine {
     this.#state = { ...getDefaultState(), ...initialState } as PwaState;
     Object.freeze(this.#state);
     this.#log.setContext({ tabId: this.#tabId });
+    better.log.info("state-engine:initialized", { tabId: this.#tabId });
   }
 
   /** Initialize async resources (IDB, BroadcastChannel) */
@@ -61,7 +62,7 @@ class StateEngine {
     await this.#loadPersistedState();
     this.#initBroadcastChannel();
     this.#initNetworkListeners();
-    this.#log.step("init").success({ tabId: this.#tabId });
+    this.#log.step("init").success();
   }
 
   /** Return a frozen snapshot of current state */
@@ -183,7 +184,7 @@ class StateEngine {
       });
     } catch {
       // IDB unavailable — degrade gracefully
-      this.#log.step("idb-unavailable").warn();
+      better.log.warn("state-engine:idb-unavailable");
     }
   }
 
@@ -211,10 +212,10 @@ class StateEngine {
 
       if (Object.keys(restored).length > 0) {
         this.#state = Object.freeze({ ...this.#state, ...restored });
-        this.#log.step("load-persisted").success({ keys: Object.keys(restored) });
+        better.log.info("state-engine:load-persisted", { keys: Object.keys(restored) });
       }
     } catch {
-      this.#log.step("load-persisted-failed").warn();
+      better.log.warn("state-engine:load-persisted-failed");
     }
   }
 
@@ -225,7 +226,7 @@ class StateEngine {
       const store = tx.objectStore(IDB_STORE);
       store.put(value, key);
     } catch {
-      this.#log.step("persist-failed").warn({ key });
+      better.log.warn("state-engine:persist-failed", { key });
     }
   }
 
@@ -238,7 +239,7 @@ class StateEngine {
         store.put(this.#state[key], key);
       }
     } catch {
-      this.#log.step("persist-all-failed").warn();
+      better.log.warn("state-engine:persist-all-failed");
     }
   }
 
@@ -252,7 +253,7 @@ class StateEngine {
         }
       };
     } catch {
-      this.#log.step("broadcastchannel-unavailable").warn();
+      better.log.warn("state-engine:broadcastchannel-unavailable");
     }
   }
 
@@ -278,8 +279,7 @@ class StateEngine {
     globalThis.addEventListener("offline", handleOffline);
 
     // Cleanup on GC (weak ref — good enough for SPA lifecycle)
-    const observer = new PerformanceObserver(() => {});
-    observer.observe({ type: "gc" as PerformanceEntryType });
+    // Note: GC observation is best-effort; browsers don't expose reliable GC events.
   }
 }
 

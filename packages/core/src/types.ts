@@ -165,14 +165,15 @@ export interface PresetConfig {
 
 // ─── Plugin System ─────────────────────────────────────────────────────────
 
-export interface StateDiff {
-  [key: string]: unknown;
-}
+// Forward reference — BetterPwaRuntime is defined in runtime/index.ts
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface BetterPwaRuntime {}
 
 export interface BetterPwaPlugin {
   name: string;
   version: string;
-  onInit?(pwa: BetterPwaRuntime): void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onInit?(pwa: any): void;
   onStateChange?(diff: StateDiff, state: PwaState): void;
   onLifecycleEvent?(event: LifecycleEvent): void;
   extend?(api: Record<string, unknown>): void;
