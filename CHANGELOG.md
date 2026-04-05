@@ -1,5 +1,357 @@
 # Changelog
 
+## @better-pwa/core@3.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/offline@3.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/storage@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/sw-builder@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/manifest@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## better-pwa@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/adapter-react@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/adapter-vue@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/adapter-svelte@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/adapter-next@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
+## @better-pwa/adapter-vite@2.0.0 (2026-04-05)
+
+- v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
+
+### Core Runtime
+- Reactive state engine with immutable snapshots, IDB persistence, BroadcastChannel cross-tab sync
+- Deterministic lifecycle state machine (8 states with guarded transitions)
+- Update controller with 4 strategies (soft, hard, gradual, on-reload)
+- Permission orchestrator with batch requests, exponential backoff, fallback UI
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy with 4-stage sequential boot pipeline
+- State migrations with versioned schema upgrades
+- Plugin system with onInit, onStateChange, onLifecycleEvent hooks
+
+### Offline & Storage
+- IDB-backed mutation queue with priority-aware replay engine
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring and eviction
+
+### Build Tools
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+
+### Infrastructure
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov upload
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme
+
+### Testing
+- 176 tests passing across 16 test files
+- Unit, integration, reliability (10K iterations), monkey, guarantee verification
+
 ## @better-pwa/core@2.1.1 (2026-04-05)
 
 - v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.

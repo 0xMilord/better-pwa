@@ -192,7 +192,9 @@ async function main() {
   console.log('[9/11] Publishing to npm...');
   for (const [pkgName, plan] of Object.entries(bumpPlan)) {
     const pkgDir = join(packagesDir, plan.dir);
-    run('npm publish --access public', pkgDir);
+    const otp = process.env.NPM_OTP;
+    const otpFlag = otp ? ` --otp=${otp}` : '';
+    run(`npm publish --access public${otpFlag}`, pkgDir);
     console.log(`✅ Published ${pkgName}@${plan.newVersion}`);
   }
 

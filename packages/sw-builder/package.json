@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/sw-builder",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Config-driven service worker generation with Workbox-based precaching and runtime caching strategies",
   "type": "module",
   "main": "./dist/index.cjs",
