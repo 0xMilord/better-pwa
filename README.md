@@ -2,9 +2,21 @@
 
 > **better-pwa is to PWAs what React Query is to server state — but for the entire app lifecycle.**
 
+<div align="center">
+
 [![CI](https://github.com/0xMilord/better-pwa/actions/workflows/ci.yml/badge.svg)](https://github.com/0xMilord/better-pwa/actions/workflows/ci.yml)
-[![Coverage](https://codecov.io/gh/0xMilord/better-pwa/branch/main/graph/badge.svg)](https://app.codecov.io/gh/0xMilord/better-pwa)
+[![Coverage](https://codecov.io/gh/0xMilord/better-pwa/branch/main/graph/badge.svg?token=e785e5bb-0776-4d98-a7e3-1b1c9493f0bc)](https://app.codecov.io/gh/0xMilord/better-pwa)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/@better-pwa/core.svg)](https://www.npmjs.com/package/@better-pwa/core)
+[![npm downloads](https://img.shields.io/npm/dm/@better-pwa/core.svg)](https://www.npmjs.com/package/@better-pwa/core)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/@better-pwa/core)](https://bundlephobia.com/result?p=@better-pwa/core)
+[![TypeScript](https://badgen.net/badge/icon/TypeScript?icon=typescript&label)](https://www.typescriptlang.org/)
 [![Docs](https://img.shields.io/badge/docs-eleventy-blue)](https://better-pwa.github.io/docs/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
+**176 Tests · 90%+ Coverage · 11 Packages · Zero Dependencies Core**
+
+</div>
 
 Add native-grade reliability to your web app in one line.
 
