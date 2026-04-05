@@ -88,12 +88,37 @@ async function main() {
   }
 
   // Step 7: Commit + Tag + Push
-  console.log('[7/8] Committing, tagging, and pushing...');
+  console.log('[7/9] Committing, tagging, and pushing...');
   run('git add .');
   run(`git commit -m "release: v${TARGET_VERSION} — stable production release of all 11 packages"`);
   run(`git tag v${TARGET_VERSION}`);
   run('git push origin main');
   run(`git push origin v${TARGET_VERSION}`);
+
+  // Step 8: Create GitHub Release
+  console.log('[8/9] Creating GitHub Release...');
+  const ghToken = process.env.GITHUB_TOKEN;
+  if (ghToken) {
+    const releaseNotes = `## v${TARGET_VERSION} (${date})\n\n### All 11 Packages Bumped to v${TARGET_VERSION}\n\nStable production release. Complete PWA runtime platform with:\n- Reactive state engine with IDB persistence and cross-tab sync\n- Deterministic lifecycle state machine (8 states, guarded transitions)\n- Update controller (4 strategies: soft, hard, gradual, on-reload)\n- Permission orchestrator (batch requests, exponential backoff, fallback UI)\n- Opinionated presets (saas, ecommerce, offline-first, content)\n- Cold start strategy (4-stage sequential boot)\n- State migrations with versioned schema upgrades\n- IDB-backed mutation queue with priority-aware replay\n- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring\n- Workbox-based SW generation with 5 caching strategies\n- Manifest.json generation with automatic icon pipeline\n- npm workspaces monorepo (11 packages)\n- GitHub Actions CI: lint → test → build → size-check → Codecov\n- One-command release pipeline with changesets\n- Eleventy docs site with dark/light theme, responsive grid\n- 176 tests passing across 16 test files`;
+
+    try {
+      const releasePayload = JSON.stringify({
+        tag_name: `v${TARGET_VERSION}`,
+        name: `v${TARGET_VERSION}`,
+        body: releaseNotes,
+        draft: false,
+        prerelease: false,
+        generate_release_notes: false,
+      });
+      run(`curl -s -X POST https://api.github.com/repos/0xMilord/better-pwa/releases -H "Authorization: token ${ghToken}" -H "Accept: application/vnd.github.v3+json" -d '${releasePayload}'`);
+      console.log('  ✅ GitHub Release created');
+    } catch (err) {
+      console.error(`  ⚠️  Failed to create GitHub Release: ${err.message}`);
+    }
+  } else {
+    console.log('  ⚠️  GITHUB_TOKEN not set — skipping GitHub Release creation');
+    console.log('  Set GITHUB_TOKEN env var to auto-create releases');
+  }
 
   // Step 8: Publish all packages
   console.log('[8/8] Publishing all packages to npm...');

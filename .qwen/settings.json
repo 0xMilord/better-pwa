@@ -15,7 +15,9 @@
       "Bash(git fetch *)",
       "Bash(git reset *)",
       "Bash(git ls-remote *)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(git config *)",
+      "Bash(git *)"
     ]
   },
   "$version": 3
