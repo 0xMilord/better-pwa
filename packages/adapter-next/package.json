@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/adapter-next",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Next.js App Router integration for better-pwa — RSC-compatible PWA runtime",
   "type": "module",
   "main": "./dist/index.cjs",

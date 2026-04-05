@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/adapter-svelte",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Svelte stores for better-pwa — pwaState() reactive integration",
   "type": "module",
   "main": "./dist/index.cjs",
