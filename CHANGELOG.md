@@ -25,6 +25,31 @@ Stable production release. Complete PWA runtime platform with:
 ---
 
 
+## v3.0.0 (2026-04-05)
+
+### All 11 Packages Bumped to v3.0.0
+
+Stable production release. Complete PWA runtime platform with:
+- Reactive state engine with IDB persistence and cross-tab sync
+- Deterministic lifecycle state machine (8 states, guarded transitions)
+- Update controller (4 strategies: soft, hard, gradual, on-reload)
+- Permission orchestrator (batch requests, exponential backoff, fallback UI)
+- Opinionated presets (saas, ecommerce, offline-first, content)
+- Cold start strategy (4-stage sequential boot)
+- State migrations with versioned schema upgrades
+- IDB-backed mutation queue with priority-aware replay
+- Unified storage abstraction (OPFS/IDB/memory) with quota monitoring
+- Workbox-based SW generation with 5 caching strategies
+- Manifest.json generation with automatic icon pipeline
+- npm workspaces monorepo (11 packages)
+- GitHub Actions CI: lint → test → build → size-check → Codecov
+- One-command release pipeline with changesets
+- Eleventy docs site with dark/light theme, responsive grid
+- 176 tests passing across 16 test files
+
+---
+
+
 ## @better-pwa/core@3.0.0 (2026-04-05)
 
 - v3.0.0 — Stable production release. Complete PWA runtime platform with full CI/CD pipeline, docs site, Codecov integration, and production-ready tooling.
