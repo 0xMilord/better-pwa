@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/offline",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "IDB-backed offline mutation queue with priority-aware replay engine for better-pwa",
   "type": "module",
   "main": "./dist/index.cjs",

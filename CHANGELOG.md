@@ -1,5 +1,192 @@
 # Changelog
 
+## @better-pwa/core@2.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/offline@2.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/storage@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/sw-builder@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/manifest@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## better-pwa@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/adapter-react@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/adapter-vue@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/adapter-svelte@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/adapter-next@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
+## @better-pwa/adapter-vite@1.1.1 (2026-04-05)
+
+- v1.0.2 — Production release with full CI pipeline, docs site, and Codecov integration.
+
+- All 11 packages: npm workspaces monorepo, proper metadata, descriptions, keywords
+- @better-pwa/core: reactive state engine, lifecycle state machine, update controller,
+  permission orchestrator, presets, cold start, state migrations, plugin system
+- @better-pwa/offline: IDB-backed mutation queue, priority-aware replay engine
+- @better-pwa/storage: OPFS/IDB/memory abstraction, quota monitoring, eviction
+- @better-pwa/sw-builder: Workbox-based SW generation, 5 caching strategies
+- @better-pwa/manifest: manifest.json generation, icon pipeline, HTML links
+- Framework adapters: React, Vue, Svelte, Next.js, Vite stubs ready for full impl
+- CI/CD: GitHub Actions lint → test → build → size-check → Codecov upload
+- Release: one-command release with changesets, auto-versioning, CHANGELOG
+- Docs: Eleventy site with dark/light theme, responsive grid, mono font
+- 176 tests passing across 16 test files (unit, integration, reliability, monkey)
+
 ## @better-pwa/core@2.1.0 (2026-04-05)
 
 - Fix docs build (Eleventy layout aliases) and add Typedoc generation to docs deploy. Improve CI by uploading coverage to Codecov and raising coverage thresholds modestly on path to 90%. Prepare release automation to run one-command release.

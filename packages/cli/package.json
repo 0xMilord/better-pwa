@@ -1,6 +1,6 @@
 {
   "name": "better-pwa",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI for better-pwa: project scaffolding, SW building, diagnostics, auditing, and simulation",
   "type": "module",
   "bin": {

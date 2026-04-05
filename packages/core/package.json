@@ -1,6 +1,6 @@
 {
   "name": "@better-pwa/core",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Zero-dependency PWA runtime: reactive state engine, lifecycle state machine, update controller, permission orchestrator, presets, and cold start strategy",
   "type": "module",
   "main": "./dist/index.cjs",
